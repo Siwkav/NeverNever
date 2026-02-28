@@ -1,3 +1,16 @@
+--[[
+
+ █     █░  █████▒▄▄▄█████▓ ▄▄▄       ██▓███  
+▓█░ █ ░█░▓██   ▒ ▓  ██▒ ▓▒▒████▄    ▓██░  ██▒
+▒█░ █ ░█ ▒████ ░ ▒ ▓██░ ▒░▒██  ▀█▄  ▓██░ ██▓▒
+░█░ █ ░█ ░▓█▒  ░ ░ ▓██▓ ░ ░██▄▄▄▄██ ▒██▄█▓▒ ▒
+░░██▒██▓ ░▒█░      ▒██▒ ░  ▓█   ▓██▒▒██▒ ░  ░
+░ ▓░▒ ▒   ▒ ░      ▒ ░░    ▒▒   ▓▒█░▒▓▒░ ░  ░
+  ▒ ░ ░   ░          ░      ▒   ▒▒ ░░▒ ░     
+  ░   ░   ░ ░      ░        ░   ▒   ░░       
+    ░                           ░  ░         
+--]]
+
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
@@ -23,14 +36,40 @@ ThemeManager:SetLibrary(Library)
 ThemeManager:SetFolder("Wexside")
 
 local Tabs = {
-    Main = Window:AddTab("Main", "house"),
-    UiSetting = Window:AddTab("Ui Setting", "settings")
+    Main = Window:AddTab({
+    Name = "Main",
+    Description = "Script or Credits",
+    Icon = "house"
+}),
+    UiSetting = Window:AddTab({
+    Name = "Ui Setting",
+    Description = "Ui settings",
+    Icon = "settings"
+})
 }
 
 local Credit = Tabs.Main:AddLeftGroupbox("Credit", "box")
 
 Credit:AddLabel("Welcome")
 Credit:AddLabel("Made by: Wftap")
+
+Credit:AddButton("Wexside Telegram", function()
+    setclipboard("https://t.me/wexside_script")
+
+    Library:Notify({
+        Title = "Wexside Loader",
+        Description = "Telegram Link Copied!",
+        Duration = 5,
+        Icon = "rbxassetid://102816031861909",
+        Sound = false
+    })
+end)
+
+local Gui = Tabs.Main:AddLeftGroupbox("Gui", "settings")
+
+Gui:AddButton("Unload Gui", function()
+    Library:Unload()
+end)
 
 local Script = Tabs.Main:AddRightGroupbox("Script", "eye")
 Script:AddLabel("Srv9 | Keyless")
