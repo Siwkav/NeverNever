@@ -1,0 +1,72 @@
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+
+local Window = Library:CreateWindow({
+    Title = "Loader Fling",
+    Footer = "Project: Wexside",
+    Icon = 102816031861909,
+    NotifySide = "Right",
+    Compact = true
+})
+
+Library:Notify({
+    Title = "Wexside Loader",
+    Description = "Welcome!",
+    Duration = 5,
+    Icon = "rbxassetid://102816031861909",
+    Sound = false
+})
+
+ThemeManager:SetLibrary(Library)
+ThemeManager:SetFolder("Wexside")
+
+local Tabs = {
+    Main = Window:AddTab("Main", "house"),
+    UiSetting = Window:AddTab("Ui Setting", "settings")
+}
+
+local Credit = Tabs.Main:AddLeftGroupbox("Credit", "box")
+
+Credit:AddLabel("Welcome")
+Credit:AddLabel("Made by: Wftap")
+
+local Script = Tabs.Main:AddRightGroupbox("Script", "eye")
+Script:AddLabel("Srv9 | Keyless")
+Script:AddButton("Srv9 Load", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Oxwoey/Main/refs/heads/main/ScriptHub/srv9FREE"))()
+end)
+
+Script:AddLabel("Posral | Keyless")
+Script:AddButton("Posral Load", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Brovaky/Friendly/refs/heads/main/Friendly'))()
+end)
+
+Script:AddLabel("Yuki Hub | Keyless")
+Script:AddButton("Copy Yuki Hub Key", function()
+    setclipboard("yukkiiii11")
+
+    Library:Notify({
+        Title = "Wexside Loader",
+        Description = "Yuki Hub Key Copied!",
+        Duration = 5,
+        Icon = "rbxassetid://102816031861909",
+        Sound = false
+    })
+end)
+
+Script:AddButton("Yuki Hub Load", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/aaaa45451619/Yuki/refs/heads/145/Yuki%20Hub%20FTAP"))()
+end)
+
+ThemeManager:SetDefaultTheme({
+    FontColor = Color3.fromRGB(255, 255, 255),
+    MainColor = Color3.fromRGB(24, 24, 37),
+    AccentColor = Color3.fromRGB(103, 89, 179),
+    BackgroundColor = Color3.fromRGB(22, 22, 31),
+    OutlineColor = Color3.fromRGB(50, 50, 50),
+})
+
+ThemeManager:ApplyToTab(Tabs.UiSetting)
+ThemeManager:LoadDefault()
